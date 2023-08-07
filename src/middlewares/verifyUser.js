@@ -43,8 +43,20 @@ const verifyPassword = async (req, res, next) => {
   next();
 };
 
+const verifyUser = async (req, res, next) => {
+  const { id } = req.params;
+  const user = await userService.findUserById(Number(id));
+
+  if (!user) {
+    return res.status(404).json({ message: 'User does not exist' });
+  }
+
+  next();
+};
+
 module.exports = {
   verifyDisplayName,
   verifyEmail,
   verifyPassword,
+  verifyUser,
 };

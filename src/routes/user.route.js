@@ -15,4 +15,6 @@ route.post(
 
 route.get('/', validateJWT, userController.findAll);
 
+route.get('/:id', validateJWT, verifyUser.verifyUser, userController.findUserById);
+
 module.exports = route;
