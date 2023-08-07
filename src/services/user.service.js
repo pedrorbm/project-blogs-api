@@ -12,7 +12,21 @@ const findUserByEmail = async (email) => {
   return findUser;
 };
 
+const findUserById = async (id) => {
+  const findUser = await User.findByPk(id);
+
+  return findUser;
+};
+
+const findAll = async () => {
+  const users = await User.findAll();
+
+  return users;
+};
+
 module.exports = {
   createUser,
   findUserByEmail,
+  findAll,
+  findUserById,
 };

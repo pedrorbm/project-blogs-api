@@ -21,6 +21,22 @@ const createUser = async (req, res) => {
   }
 };
 
+const findAll = async (req, res) => {
+  try {
+    const users = await userService.findAll();
+    const userFormatted = users.map(({ id, displayName, email, image }) => {
+      const data = { id, displayName, email, image };
+      return data;
+    });
+
+    return res.status(200).json(userFormatted);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Algo deu errado!' });
+  }
+};
+
 module.exports = {
   createUser,
+  findAll,
 };
