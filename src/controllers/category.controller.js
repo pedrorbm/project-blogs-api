@@ -11,6 +11,18 @@ const findAll = async (req, res) => {
   }
 };
 
+const create = async (req, res) => {
+  try {
+    const insert = await categoryService.create(req.body);
+    
+    return res.status(201).json(insert.dataValues);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Deu algo de errado' });
+  }
+};
+
 module.exports = {
   findAll,
+  create,
 };
