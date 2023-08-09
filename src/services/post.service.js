@@ -30,7 +30,14 @@ const findById = async (id) => {
   return post;
 };
 
+const create = async (object) => {
+  const newPost = await BlogPost.create(object);
+
+  return newPost;
+};
+
 module.exports = {
   findAll,
   findById,
+  create,
 };

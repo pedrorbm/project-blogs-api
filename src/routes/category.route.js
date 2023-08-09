@@ -6,6 +6,6 @@ const { verifyCategory } = require('../middlewares');
 const route = express.Router();
 
 route.get('/', validateJWT, categoryController.findAll);
-route.post('/', validateJWT, verifyCategory.verifyKeyName, categoryController.create);
+route.post('/', verifyCategory.verifyKeyName, validateJWT, categoryController.create);
 
 module.exports = route;

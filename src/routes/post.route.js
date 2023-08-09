@@ -9,4 +9,12 @@ route.get('/', validateJWT, postController.findAll);
 
 route.get('/:id', validateJWT, verifyPost.verifyPostExist, postController.findById);
 
+route.post(
+  '/',
+  validateJWT,
+  verifyPost.verifyPostBody,
+  verifyPost.verifyPostCategoryIds,
+  postController.create,
+);
+
 module.exports = route;
